@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { RecipeService } from './recipe.service';
 import { CreateRecipeDto } from './dto/create-recipe.dto';
 import { UpdateRecipeDto } from './dto/update-recipe.dto';
@@ -13,13 +21,13 @@ export class RecipeController {
   }
 
   @Get()
-  findAll() {
-    return this.recipeService.findAll();
+  async findAll() {
+    return await this.recipeService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.recipeService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.recipeService.findOne(+id);
   }
 
   @Patch(':id')

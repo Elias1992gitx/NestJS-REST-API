@@ -11,12 +11,14 @@ export class RecipeService {
     return 'This action adds a new recipe';
   }
 
-  findAll() {
-    return `This action returns all recipe`;
+  async findAll() {
+    return this.prisma.recipe.findMany();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} recipe`;
+    return this.prisma.recipe.findUnique({
+      where: { id },
+    });
   }
 
   update(id: number, updateRecipeDto: UpdateRecipeDto) {
